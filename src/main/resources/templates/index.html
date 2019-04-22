@@ -38,7 +38,7 @@
 
         <!-- Logo -->
         <div id="logo">
-            <h1><a href="#">PERDITA</a></h1>
+            <h1><a href="#">PERDITAAAAAAA</a></h1>
             <span class="tag">Get lost to find yourself</span>
         </div>
     </div>
@@ -77,45 +77,27 @@
 </div>
 
 <!-- Main -->
-<div id="main">
+<div id="main" th:with="endFind=${true}">
     <div id="content" class="container">
         <header>
             <h2>Our Featured</h2>
         </header>
-        <div class="row">
-            <section class="6u">
-                <a href="#" class="image full"><img src="/images/pic01.jpg" alt=""></a>
+        <div class="row" th:each="activity, activityStat : ${activities}" >
+            <section class="6u" th:if="${activityStat.size > (activityStat.count + (activityStat.count - 2))}" th:with="activityTemp=${activities[(activityStat.count + (activityStat.count - 2))]}">
+                <a href="#" class="image full"><img th:src="${activityTemp.image}" src="" alt="" th:text="${activityStat.count}"></a>
                 <header>
-                    <h2>Kasol Kheerganga</h2>
+                    <h2 th:text="${activityTemp.name}"></h2>
                 </header>
-                <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
+                <p th:text="${activityTemp.description}"></p>
             </section>
-            <section class="6u">
-                <a href="#" class="image full"><img src="/images/pic02.jpg" alt=""></a>
+            <section th:if="${activityStat.size > (activityStat.count + (activityStat.count - 1))}" class="6u" th:with="activityTemp2=${activities[(activityStat.count + (activityStat.count - 1))]}">
+                <a href="#" class="image full"><img th:src="${activityTemp2.image}" src="" alt="" th:text="${activityStat.count}"></a>
                 <header>
-                    <h2>Malana Trek</h2>
+                    <h2 th:text="${activityTemp2.name}"></h2>
                 </header>
-                <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
-            </section>
-        </div>
-
-        <div class="row">
-            <section class="6u">
-                <a href="#" class="image full"><img src="/images/pic03.jpg" alt=""></a>
-                <header>
-                    <h2>Triund Trek</h2>
-                </header>
-                <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</p>
-            </section>
-            <section class="6u">
-                <a href="#" class="image full"><img src="/images/pic04.jpg" alt=""></a>
-                <header>
-                    <h2>Magic Valley Trek</h2>
-                </header>
-                <p>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat.&rdquo;</p>
+                <p th:text="${activityTemp2.description}"></p>
             </section>
         </div>
-
     </div>
 </div>
 

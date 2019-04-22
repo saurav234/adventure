@@ -1,9 +1,7 @@
 package com.nvsm.adventure.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.text.DateFormat;
 import java.util.Date;
 
 @Entity
@@ -27,12 +25,14 @@ public class BaseActivity {
     private Double cost;
 
     private String name;
-
+    @Column(length=1024)
     private String description;
 
     private String eligibilityDescription;
 
     private Long duration;
+
+    private String url;
 
     public Long getId() {
         return id;
@@ -128,5 +128,13 @@ public class BaseActivity {
 
     public void setDuration(Long duration) {
         this.duration = duration;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
